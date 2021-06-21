@@ -1,0 +1,132 @@
+# bulk W lattice
+######设置盒子大小#######
+variable	x index 1
+variable	y index 1
+variable	z index 1
+
+variable	xx equal 20*$x
+variable	yy equal 20*$y
+variable	zz equal 20*$z
+#########################
+
+units		metal     ##设置单位
+atom_style	atomic    ##原子类型，与read_data等命令的格式相关
+
+lattice		bcc 3.183  ## 结构 晶格常数，表示实际坐标为(x y z)乘以3.183
+boundary p p p      ##周期性边界，这个要先于create_box、read_data等命令
+region		box1 block 0 ${xx} 0 ${yy} 0 ${zz}      ##创建区域ID=box1
+create_box	2 box1    ##建立模拟盒子，原子种类=2，region=box1
+                      ##此方法设置的盒子，决定该脚本里的坐标单位是"晶格常数"
+
+pair_style      twobandl  ##势的形式
+pair_coeff      * * WHe.eam.alloy W He   ##势的数据文件=W_He.eam.alloy，有W、He双元
+                                      ##如果create_box 没有设置两种原子，这里两个参数会报错
+
+neighbor	1.0 bin                  ## 近邻
+neigh_modify    every 1 delay 5 check yes  ##每5步检查一下近邻
+
+
+create_atoms	1 region box1         ##在box1区域创建1类原子
+
+######创建区域删除原子（单位：晶格常数）#####
+#region  centerpoint block 9.95 10.05 9.95 10.05 13.95 14.05
+#delete_atoms   region centerpoint
+region delregion   sphere 10  10  14  1.05  #
+delete_atoms   region delregion
+###########################
+
+######添加类型为2的原子71个######
+create_atoms   2 single  10  10  14
+create_atoms   2 single  9.5  9.5  13.5
+create_atoms   2 single  10.5  10.5  14.5
+create_atoms   2 single  9.5  9.5  14.5
+create_atoms   2 single  10.5  10.5  13.5
+create_atoms   2 single  10.5  9.5  13.5
+create_atoms   2 single  9.5  10.5  14.5
+create_atoms   2 single  9.5  10.5  13.5
+create_atoms   2 single  10.5  9.5  14.5
+create_atoms   2 single  9  10  14
+create_atoms   2 single  11  10  14
+create_atoms   2 single  10  9  14
+create_atoms   2 single  10  11  14
+create_atoms   2 single  10  10  13
+create_atoms   2 single  10  10  15
+create_atoms   2 single  9.38215  9.704125  13.4166675
+create_atoms   2 single  10.38215  10.704125  14.4166675
+create_atoms   2 single  9.38215  9.704125  14.4166675
+create_atoms   2 single  10.38215  10.704125  13.4166675
+create_atoms   2 single  10.38215  9.704125  13.4166675
+create_atoms   2 single  9.38215  10.704125  14.4166675
+create_atoms   2 single  9.38215  10.704125  13.4166675
+create_atoms   2 single  10.38215  9.704125  14.4166675
+create_atoms   2 single  8.88215  10.204125  13.9166675
+create_atoms   2 single  10.88215  10.204125  13.9166675
+create_atoms   2 single  9.88215  9.204125  13.9166675
+create_atoms   2 single  9.88215  11.204125  13.9166675
+create_atoms   2 single  9.88215  10.204125  12.9166675
+create_atoms   2 single  9.88215  10.204125  14.9166675
+create_atoms   2 single  9.38215  9.295875  13.4166675
+create_atoms   2 single  10.38215  10.295875  14.4166675
+create_atoms   2 single  9.38215  9.295875  14.4166675
+create_atoms   2 single  10.38215  10.295875  13.4166675
+create_atoms   2 single  10.38215  9.295875  13.4166675
+create_atoms   2 single  9.38215  10.295875  14.4166675
+create_atoms   2 single  9.38215  10.295875  13.4166675
+create_atoms   2 single  10.38215  9.295875  14.4166675
+create_atoms   2 single  8.88215  9.795875  13.9166675
+create_atoms   2 single  10.88215  9.795875  13.9166675
+create_atoms   2 single  9.88215  8.795875  13.9166675
+create_atoms   2 single  9.88215  10.795875  13.9166675
+create_atoms   2 single  9.88215  9.795875  12.9166675
+create_atoms   2 single  9.88215  9.795875  14.9166675
+create_atoms   2 single  9.7357025  9.5  13.4166675
+create_atoms   2 single  10.7357025  10.5  14.4166675
+create_atoms   2 single  9.7357025  9.5  14.4166675
+create_atoms   2 single  10.7357025  10.5  13.4166675
+create_atoms   2 single  10.7357025  9.5  13.4166675
+create_atoms   2 single  9.7357025  10.5  14.4166675
+create_atoms   2 single  9.7357025  10.5  13.4166675
+create_atoms   2 single  10.7357025  9.5  14.4166675
+create_atoms   2 single  9.2357025  10  13.9166675
+create_atoms   2 single  11.2357025  10  13.9166675
+create_atoms   2 single  10.2357025  9  13.9166675
+create_atoms   2 single  10.2357025  11  13.9166675
+create_atoms   2 single  10.2357025  10  12.9166675
+create_atoms   2 single  10.2357025  10  14.9166675
+create_atoms   2 single  9.5  9.5  13.75
+create_atoms   2 single  10.5  10.5  14.75
+create_atoms   2 single  9.5  9.5  14.75
+create_atoms   2 single  10.5  10.5  13.75
+create_atoms   2 single  10.5  9.5  13.75
+create_atoms   2 single  9.5  10.5  14.75
+create_atoms   2 single  9.5  10.5  13.75
+create_atoms   2 single  10.5  9.5  14.75
+create_atoms   2 single  9  10  14.25
+create_atoms   2 single  11  10  14.25
+create_atoms   2 single  10  9  14.25
+create_atoms   2 single  10  11  14.25
+create_atoms   2 single  10  10  13.25
+create_atoms   2 single  10  10  15.25
+#########################
+
+####初始化速度，维里理论初始2000K，得到1000K###
+velocity	all create 2000.0 376847 loop geom
+###velocity group_ID  create  [Temp] [random seed] loog geom ###
+
+#####时间步长，“金属“单位里边时间单位为ps
+timestep	0.001
+thermo		1000    ##1000步输出热力学数据
+
+#####系综nvt,起始1K，终点1K，阻尼系数1####
+fix		1a all nvt temp 1000 1000 1 
+####由于时间步长为0.001，则这里阻尼1表示温度恢复时间约为1000步
+
+dump myDump all  atom 100000 dump_*.atom.gz   ##dump文件，拓展名为gz表示以压缩格式输出
+                                             ##每十万步dump一次，“*”会被步数代替
+
+restart 100000 my_res_file1 my_res_file2   ##每十万步交替输出续算文件
+
+run   300000     ##执行3十万步
+
+write_restart restart.*.file   ##最后写一个restartfile
+write_data rd.dat   ##写一个可读入的坐标文件
