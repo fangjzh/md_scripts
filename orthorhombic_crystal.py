@@ -14,7 +14,23 @@ the integer solution range is [%d,%d],\
     original lattice vector is [1 0 0] [0 1 0] [0 0 1]." % (r_l,r_h))
 r_h = r_h + 1
 
-line=input("please input an intager vector as x oritation: ")
+line = input("please chose the determined axis x,y or z:")
+icho_s = line[0]
+if( icho_s == 'x' ):
+    icho = 1
+    line=input("please input an intager vector as x oritation: ")
+else if ( icho_s == 'y'):
+    icho = 2
+    line=input("please input an intager vector as y oritation: ")
+else if ( icho_s == 'z' ):
+    icho = 3
+    line=input("please input an intager vector as z oritation: ")
+else:
+    print("error input")
+    exit()
+
+
+
 a = line.split()
 a = np.array([ int(x) for x in a ])
 if ( len(a) != 3 ):
@@ -51,7 +67,12 @@ for b1 in b:
                     cross_r2 = np.linalg.norm(cross_r)
                     if ( cross_r2 == 0  and cross_r1 > 0.1):
                         num_r = 1
-                        print(a,b1,[i,j,k])
+                        if(icho == 1):
+                            print(a,b1,np.array([i,j,k]))
+                        else if(icho == 2):
+                            print(np.array([i,j,k]),a,b1)
+                        else:
+                            print(b1,np.array([i,j,k]),a)
 
 if (num_r == 0):
     print("no result!!")
