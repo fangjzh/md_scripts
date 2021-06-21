@@ -1,0 +1,19 @@
+Control parametre file
+Atom: He  Tempreture: 100K
+Box size in angstrom
+25 25 25
+Number of atoms
+3
+Total number of data sets
+100
+Interval time in fs (between two sets of data)
+50.0
+
+###format example of input atom file
+step: 50   ##molecular dynamics steps, actually meaningless in msd program
+0.3 0.3 0.3
+0.4 0.4 0.4 
+step: 100  
+0.31 0.31 0.31
+0.43 0.43 0.43 
+... .... ....

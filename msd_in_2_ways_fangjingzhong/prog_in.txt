@@ -1,0 +1,10 @@
+Control parametre file
+Atom: He  Tempreture: 100K
+Box size in angstrom
+95.140266 95.140266 248.633240
+Number of atoms:
+       1
+Total number of data sets:
+     250
+Interval time in fs (between two sets of data)
+    2000

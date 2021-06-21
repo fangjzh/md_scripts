@@ -1,0 +1,9 @@
+Atom: He  Tempreture: 100K                                              
+Box size is:         95.1402664        95.1402664       248.6332397
+Number of atoms is:        1
+Number of total steps is:      250
+Delta_t is: 2000.000 fs
+ Regression coefficients for the least-squares line:
+ slope     (m)        =     3.65999E-02
+ Intercept (b)        =      -426.059
+ diffusion coefficient=     6.09999E-03  angstrom squal/femtosecond
