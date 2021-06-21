@@ -19,10 +19,10 @@ icho_s = line[0]
 if( icho_s == 'x' ):
     icho = 1
     line=input("please input an intager vector as x oritation: ")
-else if ( icho_s == 'y'):
+elif ( icho_s == 'y'):
     icho = 2
     line=input("please input an intager vector as y oritation: ")
-else if ( icho_s == 'z' ):
+elif ( icho_s == 'z' ):
     icho = 3
     line=input("please input an intager vector as z oritation: ")
 else:
@@ -69,7 +69,7 @@ for b1 in b:
                         num_r = 1
                         if(icho == 1):
                             print(a,b1,np.array([i,j,k]))
-                        else if(icho == 2):
+                        elif(icho == 2):
                             print(np.array([i,j,k]),a,b1)
                         else:
                             print(b1,np.array([i,j,k]),a)
